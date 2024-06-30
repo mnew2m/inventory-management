@@ -1,0 +1,11 @@
+server:
+  port: 3000
+
+spring:
+  application:
+    name: inventory-management
+  datasource:
+    url: jdbc:mariadb://localhost:3306/inventory_management
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: password
