@@ -3,7 +3,6 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
@@ -17,6 +16,6 @@ export default defineConfig({
     port: 8080
   },
   build: {
-    outDir: '../src/main/resources/static'
-  }
+    outDir: '../src/main/resources/static',
+  },
 })
