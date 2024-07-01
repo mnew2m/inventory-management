@@ -14,6 +14,7 @@ const routes = [
     {
         path: '/:catchAll(.*)',
         component: () => import('@/components/NotFound.vue'),
+        meta: { hideHeader: true },
     },
 ];
 
