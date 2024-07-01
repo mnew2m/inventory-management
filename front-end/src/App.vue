@@ -3,7 +3,7 @@
     <the-header v-if="!$route.meta.hideHeader"/>
     <v-main>
       <v-container fluid>
-        <router-view></router-view>
+        <router-view/>
       </v-container>
     </v-main>
   </v-app>
