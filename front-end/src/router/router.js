@@ -2,13 +2,13 @@ import { createWebHistory, createRouter } from "vue-router";
 
 const routes = [
     {
-        path: '/test',
-        name: 'TestComponent',
-        component: () => import('@/components/TestComponent.vue'),
+        path: '/',
+        name: 'TestPage',
+        component: () => import('@/pages/TestPage.vue'),
     },
     {
         path: '/:catchAll(.*)',
-        component: () => import('@/components/NotFound.vue'),
+        component: () => import('@/pages/NotFoundPage.vue'),
         meta: { hideHeader: true },
     },
 ];
