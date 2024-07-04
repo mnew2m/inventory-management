@@ -31,9 +31,6 @@ public class ItemList extends BaseEntity{
     @Comment("구매처")
     private String site;
 
-    @Comment("이미지")
-    private String img;
-
     @Comment("메모")
     private String memo;
 

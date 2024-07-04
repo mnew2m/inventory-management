@@ -28,9 +28,6 @@ public class EtcList extends BaseEntity{
     @Comment("상품 이름")
     private String name;
 
-    @Comment("이미지")
-    private String img;
-
     @Comment("메모")
     private String memo;
 
