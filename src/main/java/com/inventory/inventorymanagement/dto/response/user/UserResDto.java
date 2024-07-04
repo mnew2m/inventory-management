@@ -1,4 +1,4 @@
-package com.inventory.inventorymanagement.dto.response;
+package com.inventory.inventorymanagement.dto.response.user;
 
 import lombok.Builder;
 import lombok.Data;
