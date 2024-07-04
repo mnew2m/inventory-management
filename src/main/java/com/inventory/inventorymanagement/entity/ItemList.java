@@ -25,7 +25,7 @@ public class ItemList extends BaseEntity{
     @OneToOne
     private Category category;
 
-    @Comment("상품 이름")
+    @Comment("상품명")
     private String name;
 
     @Comment("구매처")

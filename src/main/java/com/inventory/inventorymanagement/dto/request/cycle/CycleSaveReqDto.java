@@ -1,4 +1,4 @@
-package com.inventory.inventorymanagement.dto.request.item;
+package com.inventory.inventorymanagement.dto.request.cycle;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,15 +7,12 @@ import java.time.LocalDate;
 
 @Data
 @Builder
-public class ItemSaveReqDto {
+public class CycleSaveReqDto {
     // 카테고리 seq
     private int categorySeq;
 
     // 상품명
     private String name;
-
-    // 구매처
-    private String site;
 
     // 메모
     private String memo;
@@ -23,9 +20,9 @@ public class ItemSaveReqDto {
     // 수량
     private int cnt;
 
-    // 구매일
-    private LocalDate boughtDate;
+    // 교체 주기
+    private int cycle;
 
-    // 가격
-    private int price;
+    // 마지막 교체일
+    private LocalDate lastCycleDate;
 }

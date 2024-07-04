@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Accessors(chain = true)
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-public class EtcList extends BaseEntity{
+public class CycleItemList extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int seq;
@@ -25,7 +25,7 @@ public class EtcList extends BaseEntity{
     @OneToOne
     private Category category;
 
-    @Comment("상품 이름")
+    @Comment("상품명")
     private String name;
 
     @Comment("메모")
@@ -34,9 +34,9 @@ public class EtcList extends BaseEntity{
     @Comment("수량")
     private int cnt;
 
-    @Comment("구매일")
-    private LocalDate boughtDate;
-
     @Comment("교체 주기")
     private int cycle;
+
+    @Comment("마지막 교체일")
+    private LocalDate lastCycleDate;
 }

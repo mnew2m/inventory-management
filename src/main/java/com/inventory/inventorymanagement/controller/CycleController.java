@@ -2,7 +2,7 @@ package com.inventory.inventorymanagement.controller;
 
 import com.inventory.inventorymanagement.dto.request.item.ItemReqDto;
 import com.inventory.inventorymanagement.dto.request.item.ItemSaveReqDto;
-import com.inventory.inventorymanagement.dto.request.user.UserReqDto;
+import com.inventory.inventorymanagement.service.CycleService;
 import com.inventory.inventorymanagement.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.DeferredResult;
 
 @Slf4j
-@RequestMapping("/item")
+@RequestMapping("/cycle")
 @RequiredArgsConstructor
 @RestController
-public class ItemController extends DefaultRestController{
-    private final ItemService itemService;
+public class CycleController extends DefaultRestController{
+    private final CycleService cycleService;
 
     /**
-     * 구매 내역 등록
+     * 교체주기 내역 등록
      *
      * @param dto dto
      * */
@@ -33,7 +33,7 @@ public class ItemController extends DefaultRestController{
     }
 
     /**
-     * 구매 내역 수정
+     * 교체주기 내역 수정
      *
      * @param dto dto
      * */
@@ -48,7 +48,7 @@ public class ItemController extends DefaultRestController{
     }
 
     /**
-     * 구매 내역 삭제
+     * 교체주기 내역 삭제
      *
      * @param seq 아이템 seq
      * */
@@ -63,7 +63,7 @@ public class ItemController extends DefaultRestController{
     }
 
     /**
-     * 구매 내역 조회
+     * 교체주기 내역 조회
      *
      * @param dto dto
      * */
