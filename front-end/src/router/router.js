@@ -3,8 +3,23 @@ import { createWebHistory, createRouter } from "vue-router";
 const routes = [
     {
         path: '/',
-        name: 'TestPage',
-        component: () => import('@/pages/TestPage.vue'),
+        name: 'HomePage',
+        component: () => import('@/pages/HomePage.vue'),
+    },
+    {
+        path: '/purchaseHistory',
+        name: 'PurchaseHistoryPage',
+        component: () => import('@/pages/PurchaseHistoryPage.vue'),
+    },
+    {
+        path: '/replacementCycles',
+        name: 'ReplacementCyclesPage',
+        component: () => import('@/pages/ReplacementCyclesPage.vue'),
+    },
+    {
+        path: '/system',
+        name: 'SystemPage',
+        component: () => import('@/pages/SystemPage.vue'),
     },
     {
         path: '/:catchAll(.*)',

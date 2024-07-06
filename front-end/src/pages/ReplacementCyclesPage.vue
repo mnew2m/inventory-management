@@ -3,7 +3,7 @@
     <v-row justify="center">
       <v-col cols="12" md="8">
         <v-sheet class="bg-grey-lighten-3" min-height="85vh" rounded="lg">
-          <v-btn color="error" @click="plusCounter">Counter ++</v-btn>
+          <v-btn color="error" @click="plusCounter">Replacement Cycles Page</v-btn>
           <div>Current Count: {{ counter.count }}</div>
         </v-sheet>
       </v-col>
