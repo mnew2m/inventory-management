@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex justify-center">
     <v-row justify="center">
-      <v-col cols="12" md="8">
+      <v-col cols="12" md="9">
         <v-sheet class="bg-grey-lighten-3" min-height="85vh" rounded="lg">
           <v-btn color="error" @click="plusCounter">System Page</v-btn>
           <div>Current Count: {{ counter.count }}</div>

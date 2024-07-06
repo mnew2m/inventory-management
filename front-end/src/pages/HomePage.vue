@@ -1,9 +1,9 @@
 <template>
   <div class="d-flex justify-center">
     <v-row justify="center">
-      <v-col cols="12" md="8">
-        <v-sheet class="bg-grey-lighten-3" min-height="85vh" rounded="lg">
-          <v-btn color="error" @click="plusCounter">Home Page</v-btn>
+      <v-col cols="12" md="9">
+        <v-sheet class="bg-grey-lighten-3">
+          <v-btn color="primary" @click="plusCounter">Home Page</v-btn>
           <div>Current Count: {{ counter.count }}</div>
         </v-sheet>
       </v-col>
