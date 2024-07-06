@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import TheHeader from "@/components/common/TheHeader.vue";
+import TheHeader from "@/components/layout/TheHeader.vue";
 </script>
 
 <style>

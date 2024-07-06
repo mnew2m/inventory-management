@@ -4,7 +4,7 @@
       <HeaderMenu />
     </div>
     <v-spacer/>
-    <v-tabs color="grey-darken-2" centered>
+    <v-tabs centered>
       <v-tab v-for="page in pages" :key="page.name" :to="page.path">
         {{ page.name }}
       </v-tab>
@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import HeaderMenu from "@/components/common/HeaderAvatarMenu.vue";
+import HeaderMenu from "@/components/specific/HeaderAvatarMenu.vue";
 
 const pages = [
   { name: 'HOME', path: '/' },
