@@ -65,10 +65,10 @@ public class ItemController extends DefaultRestController{
     /**
      * 구매 내역 삭제
      *
-     * @param seq 아이템 seq
+     * @param itemId 아이템 ID
      * */
-    @DeleteMapping("/{seq}")
-    public DeferredResult<ResponseEntity<?>> delete(@PathVariable int seq) {
+    @DeleteMapping("/{itemId}")
+    public DeferredResult<ResponseEntity<?>> delete(@PathVariable Integer itemId) {
         try {
             return successResponse();
         } catch (Exception e) {

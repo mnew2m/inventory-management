@@ -18,11 +18,11 @@ import org.hibernate.annotations.Comment;
 public class User extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private int userId;
 
     @Comment("아이디")
     @Column(unique = true, length = 20)
-    private String userId;
+    private String id;
 
     @Comment("이름")
     @Column(length = 10)

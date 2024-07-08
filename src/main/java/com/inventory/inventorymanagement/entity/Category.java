@@ -15,7 +15,7 @@ import org.hibernate.annotations.Comment;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private int categoryId;
 
     @Comment("유저seq")
     @ManyToOne
@@ -25,5 +25,5 @@ public class Category {
     private String name;
 
     @Comment("순서")
-    private int rank;
+    private int seq;
 }

@@ -8,8 +8,8 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class CycleSaveReqDto {
-    // 카테고리 seq
-    private int categorySeq;
+    // 카테고리 ID
+    private int categoryId;
 
     // 상품명
     private String name;

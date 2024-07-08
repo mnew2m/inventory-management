@@ -8,8 +8,8 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class ItemResDto {
-    // 아이템 seq
-    private int itemSeq;
+    // 아이템 ID
+    private int itemId;
 
     // 구매처
     private String site;

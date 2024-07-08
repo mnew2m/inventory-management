@@ -19,7 +19,7 @@ import java.time.LocalDate;
 public class ItemList extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int seq;
+    private int itemId;
 
     @Comment("카테고리seq")
     @OneToOne

@@ -18,10 +18,10 @@ public class UserController extends DefaultRestController{
     /**
      * 유저 정보 조회
      *
-     * @param seq seq
+     * @param userId 유저 ID
      * */
-    @GetMapping("/{seq}")
-    public DeferredResult<ResponseEntity<?>> getUser(@PathVariable Integer seq) {
+    @GetMapping("/{userId}")
+    public DeferredResult<ResponseEntity<?>> getUser(@PathVariable Integer userId) {
         try {
             return successResponse();
         } catch (Exception e) {

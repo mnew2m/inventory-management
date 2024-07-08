@@ -6,8 +6,8 @@ import lombok.Data;
 @Data
 @Builder
 public class CycleReqDto {
-    // 유저 seq
-    private int userSeq;
+    // 유저 ID
+    private int userId;
 
     // 기준 년도
     private String year;
