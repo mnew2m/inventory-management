@@ -3,14 +3,15 @@
       v-model="selectedRow"
       :no-data-text="props.noDataText"
       :headers="store.purchaseGridHeaders"
-      :items="store.purchaseGridItems"
+      :items="store.getPurchaseGridItems"
       item-value="purchaseId"
       :search="search"
       show-select
       return-object
+      density="comfortable"
   >
     <template #top>
-      <div class="d-flex align-center justify-space-between">
+      <div class=" mb-2 d-flex align-center justify-space-between">
         <v-text-field
           v-model="search"
           placeholder="검색"

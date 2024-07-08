@@ -2,7 +2,7 @@
   <div class="d-flex justify-center">
     <v-row justify="center">
       <v-col cols="12" md="9">
-        <v-data-iterator :items="store.purchaseGridItems" item-value="productName" :page="page">
+        <v-data-iterator :items="store.gridItems" item-value="productName" :page="page">
           <template v-slot:default="{ items }">
             <v-row>
               <v-col cols="12" v-for="item in items" :key="item.purchaseId">
