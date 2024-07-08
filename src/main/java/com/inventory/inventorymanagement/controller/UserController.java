@@ -16,6 +16,21 @@ public class UserController extends DefaultRestController{
     private final UserService userService;
 
     /**
+     * 유저 정보 조회
+     *
+     * @param seq seq
+     * */
+    @GetMapping("/{seq}")
+    public DeferredResult<ResponseEntity<?>> getUser(@PathVariable Integer seq) {
+        try {
+            return successResponse();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return failResponse(e);
+        }
+    }
+
+    /**
      * 회원가입
      *
      * @param dto dto
