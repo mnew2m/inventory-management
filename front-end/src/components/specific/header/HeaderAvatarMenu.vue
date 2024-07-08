@@ -17,7 +17,7 @@
           </v-btn>
           <v-divider class="my-2"></v-divider>
           <v-btn :variant="props.variant" rounded>
-            LOG OUT
+            LOGOUT
           </v-btn>
         </div>
       </v-card-text>
