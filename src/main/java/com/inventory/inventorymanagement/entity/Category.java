@@ -1,5 +1,6 @@
 package com.inventory.inventorymanagement.entity;
 
+import com.inventory.inventorymanagement.entity.enums.CategoryType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,10 @@ public class Category {
     @Comment("유저seq")
     @ManyToOne
     private User user;
+
+    @Comment("카테고리 타입")
+    @Enumerated(EnumType.STRING)
+    private CategoryType type;
 
     @Comment("카테고리명")
     private String name;
