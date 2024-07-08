@@ -18,6 +18,21 @@ public class ItemController extends DefaultRestController{
     private final ItemService itemService;
 
     /**
+     * 구매 내역 조회
+     *
+     * @param dto dto
+     * */
+    @GetMapping("/list")
+    public DeferredResult<ResponseEntity<?>> getList(@RequestBody ItemReqDto dto) {
+        try {
+            return successResponse();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return failResponse(e);
+        }
+    }
+
+    /**
      * 구매 내역 등록
      *
      * @param dto dto
@@ -54,21 +69,6 @@ public class ItemController extends DefaultRestController{
      * */
     @DeleteMapping("/{seq}")
     public DeferredResult<ResponseEntity<?>> delete(@PathVariable int seq) {
-        try {
-            return successResponse();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            return failResponse(e);
-        }
-    }
-
-    /**
-     * 구매 내역 조회
-     *
-     * @param dto dto
-     * */
-    @PostMapping("/list")
-    public DeferredResult<ResponseEntity<?>> getList(@RequestBody ItemReqDto dto) {
         try {
             return successResponse();
         } catch (Exception e) {

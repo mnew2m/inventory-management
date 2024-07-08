@@ -18,6 +18,21 @@ public class CycleController extends DefaultRestController{
     private final CycleService cycleService;
 
     /**
+     * 교체주기 내역 조회
+     *
+     * @param dto dto
+     * */
+    @GetMapping("/list")
+    public DeferredResult<ResponseEntity<?>> getList(@RequestBody ItemReqDto dto) {
+        try {
+            return successResponse();
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return failResponse(e);
+        }
+    }
+
+    /**
      * 교체주기 내역 등록
      *
      * @param dto dto
@@ -54,21 +69,6 @@ public class CycleController extends DefaultRestController{
      * */
     @DeleteMapping("/{seq}")
     public DeferredResult<ResponseEntity<?>> delete(@PathVariable int seq) {
-        try {
-            return successResponse();
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            return failResponse(e);
-        }
-    }
-
-    /**
-     * 교체주기 내역 조회
-     *
-     * @param dto dto
-     * */
-    @PostMapping("/list")
-    public DeferredResult<ResponseEntity<?>> getList(@RequestBody ItemReqDto dto) {
         try {
             return successResponse();
         } catch (Exception e) {
