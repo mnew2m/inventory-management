@@ -10,7 +10,6 @@
       </v-tab>
     </v-tabs>
     <v-spacer/>
-    <!--<v-avatar class="hidden-sm-and-down" icon="mdi-account-circle" />-->
     <div class="hidden-sm-and-down">
       <HeaderMenu />
     </div>
@@ -18,7 +17,7 @@
 </template>
 
 <script setup>
-import HeaderMenu from "@/components/specific/HeaderAvatarMenu.vue";
+import HeaderMenu from "@/components/specific/header/HeaderAvatarMenu.vue";
 
 const pages = [
   { name: 'HOME', path: '/' },
