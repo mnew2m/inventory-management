@@ -9,5 +9,5 @@
 </template>
 
 <script setup>
-import PhDataList from "@/components/specific/purchaseHistory/phDataList.vue";
+import PhDataList from "@/components/specific/purchaseHistory/purchaseHistoryDataList.vue";
 </script>
