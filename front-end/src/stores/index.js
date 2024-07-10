@@ -34,6 +34,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240702',
             cyclesYn: 'Y',
             cycles: 3,
+            isEditMode: false,
         },
         {
             purchaseId: 2,
@@ -47,6 +48,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240704',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 3,
@@ -60,6 +62,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240705',
             cyclesYn: 'Y',
             cycles: 8,
+            isEditMode: false,
         },
         {
             purchaseId: 4,
@@ -73,6 +76,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240706',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 5,
@@ -86,6 +90,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240707',
             cyclesYn: 'Y',
             cycles: 6,
+            isEditMode: false,
         },
         {
             purchaseId: 6,
@@ -99,6 +104,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240708',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 7,
@@ -112,6 +118,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240709',
             cyclesYn: 'Y',
             cycles: 4,
+            isEditMode: false,
         },
         {
             purchaseId: 8,
@@ -125,6 +132,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240710',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 9,
@@ -138,6 +146,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240711',
             cyclesYn: 'Y',
             cycles: 12,
+            isEditMode: false,
         },
         {
             purchaseId: 10,
@@ -151,6 +160,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240712',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 11,
@@ -164,6 +174,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240713',
             cyclesYn: 'Y',
             cycles: 9,
+            isEditMode: false,
         },
         {
             purchaseId: 12,
@@ -177,6 +188,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240714',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 13,
@@ -190,6 +202,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240715',
             cyclesYn: 'Y',
             cycles: 2,
+            isEditMode: false,
         },
         {
             purchaseId: 14,
@@ -203,6 +216,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240716',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 15,
@@ -216,6 +230,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240717',
             cyclesYn: 'Y',
             cycles: 7,
+            isEditMode: false,
         },
         {
             purchaseId: 16,
@@ -229,6 +244,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240718',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 17,
@@ -242,6 +258,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240719',
             cyclesYn: 'Y',
             cycles: 5,
+            isEditMode: false,
         },
         {
             purchaseId: 18,
@@ -255,6 +272,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240720',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 19,
@@ -268,6 +286,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240721',
             cyclesYn: 'Y',
             cycles: 4,
+            isEditMode: false,
         },
         {
             purchaseId: 20,
@@ -281,6 +300,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240722',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 21,
@@ -294,6 +314,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240723',
             cyclesYn: 'Y',
             cycles: 3,
+            isEditMode: false,
         },
         {
             purchaseId: 22,
@@ -307,6 +328,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240724',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 23,
@@ -320,6 +342,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240725',
             cyclesYn: 'Y',
             cycles: 6,
+            isEditMode: false,
         },
         {
             purchaseId: 24,
@@ -333,6 +356,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240726',
             cyclesYn: 'N',
             cycles: 0,
+            isEditMode: false,
         },
         {
             purchaseId: 25,
@@ -346,6 +370,7 @@ export const useInventoryStore = defineStore('inventory', () => {
             purchaseDate: '20240727',
             cyclesYn: 'Y',
             cycles: 2,
+            isEditMode: false,
         },
     ]);
     // const getPurchaseGridItems = computed(() => gridItems.value.filter(x => x.cyclesYn === 'Y'));
