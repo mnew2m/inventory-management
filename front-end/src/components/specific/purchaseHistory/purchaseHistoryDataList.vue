@@ -9,7 +9,7 @@
     :density="props.gridDensity"
     show-select
     return-object
-    expand-on-click
+    show-expand
     :expanded="expandedRowList"
     @update:expanded="expandedRow"
     hover
@@ -17,7 +17,6 @@
     <template #top>
       <div class=" mb-2 d-flex align-center justify-space-between">
         <search-text-field :search-model="search" @onUpdate="onSearch" />
-        <v-spacer/>
         <v-btn
           prepend-icon="mdi-delete"
           color="primary"
@@ -26,32 +25,31 @@
           @click="onClickDelete"
         >삭제</v-btn>
       </div>
-      <v-divider class="mt-3"></v-divider>
     </template>
-    <template #[`item.productPrice`]="{ value }">
-      <!--<template v-if="item.isEditMode">
-        <v-text-field
-          variant="solo-filled"
-          density="compact"
-          flat
-          tile
-          hide-details
-          :model-value="value"
-        ></v-text-field>
-      </template>
-      <template v-else>
-        {{ addComma(value) }}원
-      </template>-->
-      {{ addComma(value) }}원
+    <template #item="{ item }">
+      <tr>
+        <td class="px-2 py-0"><v-checkbox-btn /></td>
+        <td class="pa-0"><grid-text-field :model-val="item.purchasePlace" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><grid-text-field :model-val="item.purchaseImage" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><grid-text-field :model-val="item.category" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><grid-text-field :model-val="item.productName" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><grid-text-field :model-val="item.productMemo" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><grid-text-field :model-val="!item.isEditMode ? addComma(item.productPrice) : item.productPrice" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><grid-text-field :model-val="item.productQty" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><grid-text-field :model-val="!item.isEditMode ? formatDate(item.purchaseDate) : item.purchaseDate" :readonly="!item.isEditMode" /></td>
+        <td class="pa-0"><v-btn variant="flat" icon="mdi-menu-down" @click="expandedRow(item)" /></td>
+      </tr>
     </template>
-    <template #[`item.purchaseDate`]="{ value }">
-      {{ formatDate(value) }}
+    <!--<template #[`item.productPrice`]="{ item, value }">
+      <grid-text-field :model-val="!item.isEditMode ? addComma(value) : value" :readonly="!item.isEditMode" />
     </template>
+    <template #[`item.purchaseDate`]="{ item, value }">
+      <grid-text-field :model-val="!item.isEditMode ? formatDate(value) : value" :readonly="!item.isEditMode" />
+    </template>-->
     <template #expanded-row="{ columns, item }">
       <tr>
         <td :colspan="columns.length">
           <v-row justify="center" no-gutters>
-            <!-- TODO row 편집모드 추가하기 -->
             <div v-if="!item.isEditMode">
               <v-btn
                 class="mx-3 my-2"
@@ -118,6 +116,7 @@ import {computed, ref} from "vue";
 import {useInventoryStore} from "@/stores/index.js";
 import {addComma, formatDate} from "@/utils/common.js";
 import SearchTextField from "@/components/elements/searchTextField.vue";
+import GridTextField from "@/components/elements/gridTextField.vue";
 
 const store = useInventoryStore();
 const search = ref('');
@@ -198,18 +197,25 @@ function unexpandedRow(item) {
  * row 선택 시 update expanded
  * */
 function expandedRow(item) {
-  item.map((x) => x.isEditMode = false);
+  console.log(item);
+  // expandedRow 초기화
   expandedRowList.value = [];
+
   // 선택했던 row 다시 클릭하면 item length 0임
-  if (item.length === 0) return;
-
-  if (item.length === 1) {
-    expandedRowList.value.push(item[0]);
-  } else {
-    expandedRowList.value.push(item[1]);
+  if (item.length === 0) {
+    store.setEditMode(false);
+    return;
   }
-}
 
+  // item.isEditMode = true;
+  expandedRowList.value.push(item);
+  // item.map((x) => x.isEditMode = false);
+  // if (item.length === 1) {
+  //   expandedRowList.value.push(item[0]);
+  // } else {
+  //   expandedRowList.value.push(item[1]);
+  // }
+}
 </script>
 
 <style scoped>

@@ -376,6 +376,10 @@ export const useInventoryStore = defineStore('inventory', () => {
     // const getPurchaseGridItems = computed(() => gridItems.value.filter(x => x.cyclesYn === 'Y'));
     const getReplacementGridItems = computed(() => gridItems.value.filter(x => x.cyclesYn === 'Y'));
 
+    function setEditMode(value) {
+        gridItems.value.map((x) => x.isEditMode = value);
+    }
+
     function deleteGridItem(items) {
         for(let i in items){
             const index = gridItems.value.indexOf(items[i]);
@@ -389,6 +393,6 @@ export const useInventoryStore = defineStore('inventory', () => {
     return {
         count, purchaseGridHeaders, replacementCyclesGridHeaders,
         gridItems, getReplacementGridItems,
-        deleteGridItem, increment
+        setEditMode, deleteGridItem, increment
     }
 })
