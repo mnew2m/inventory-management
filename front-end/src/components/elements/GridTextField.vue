@@ -1,7 +1,7 @@
 <template>
   <v-text-field
-    class="text-subtitle-2"
-    variant="solo"
+    class="text-subtitle-2 ml-1"
+    :variant="props.readonly ? 'solo' : 'outlined'"
     density="compact"
     flat
     tile
@@ -13,6 +13,9 @@
 
 <script setup>
 const props = defineProps({
+  variant: {
+    default: 'solo',
+  },
   modelVal: {
     default: '',
   },
