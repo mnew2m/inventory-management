@@ -115,8 +115,8 @@
 import {computed, ref} from "vue";
 import {useInventoryStore} from "@/stores/index.js";
 import {addComma, formatDate} from "@/utils/common.js";
-import SearchTextField from "@/components/elements/searchTextField.vue";
-import GridTextField from "@/components/elements/gridTextField.vue";
+import SearchTextField from "@/components/elements/SearchTextField.vue";
+import GridTextField from "@/components/elements/GridTextField.vue";
 
 const store = useInventoryStore();
 const search = ref('');
