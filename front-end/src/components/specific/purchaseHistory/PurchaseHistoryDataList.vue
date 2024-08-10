@@ -8,11 +8,13 @@
     :no-data-text="props.gridNoDataText"
     :density="props.gridDensity"
     show-select
+    select-strategy="single"
     return-object
     show-expand
     :expanded="expandedRowList"
     @update:expanded="expandedRow"
     hover
+    @change="changeEvent"
   >
     <template #top>
       <div class=" mb-2 d-flex align-center justify-space-between">
@@ -28,24 +30,18 @@
     </template>
     <template #item="{ item }">
       <tr>
-        <td class="px-2 py-0"><v-checkbox-btn /></td>
-        <td class="pa-0"><grid-text-field :model-val="item.purchasePlace" :readonly="!item.isEditMode" /></td>
-        <td class="pa-0"><grid-text-field :model-val="item.purchaseImage" :readonly="!item.isEditMode" /></td>
-        <td class="pa-0"><grid-text-field :model-val="item.category" :readonly="!item.isEditMode" /></td>
-        <td class="pa-0"><grid-text-field :model-val="item.productName" :readonly="!item.isEditMode" /></td>
-        <td class="pa-0"><grid-text-field :model-val="item.productMemo" :readonly="!item.isEditMode" /></td>
-        <td class="pa-0"><grid-text-field :model-val="!item.isEditMode ? addComma(item.productPrice) : item.productPrice" :readonly="!item.isEditMode" /></td>
-        <td class="pa-0"><grid-text-field :model-val="item.productQty" :readonly="!item.isEditMode" /></td>
-        <td class="pa-0"><grid-text-field :model-val="!item.isEditMode ? formatDate(item.purchaseDate) : item.purchaseDate" :readonly="!item.isEditMode" /></td>
+        <td class="px-2 py-0"><v-checkbox-btn @click="selectedRow(item)" /></td>
+        <td class="pa-0"><grid-text-field :readonly="!item.isEditMode" :model-val="item.purchasePlace" /></td>
+        <td class="pa-0"><grid-text-field :readonly="true" :model-val="item.purchaseImage" /></td>
+        <td class="pa-0"><grid-text-field :readonly="!item.isEditMode" :model-val="item.category" /></td>
+        <td class="pa-0"><grid-text-field :readonly="!item.isEditMode" :model-val="item.productName" /></td>
+        <td class="pa-0"><grid-text-field :readonly="!item.isEditMode" :model-val="item.productMemo" /></td>
+        <td class="pa-0"><grid-text-field :readonly="!item.isEditMode" :model-val="!item.isEditMode ? addComma(item.productPrice) : item.productPrice" /></td>
+        <td class="pa-0"><grid-text-field :readonly="!item.isEditMode" :model-val="item.productQty" /></td>
+        <td class="pa-0"><grid-text-field :readonly="!item.isEditMode" :model-val="!item.isEditMode ? formatDate(item.purchaseDate) : item.purchaseDate" /></td>
         <td class="pa-0"><v-btn variant="flat" icon="mdi-menu-down" @click="expandedRow(item)" /></td>
       </tr>
     </template>
-    <!--<template #[`item.productPrice`]="{ item, value }">
-      <grid-text-field :model-val="!item.isEditMode ? addComma(value) : value" :readonly="!item.isEditMode" />
-    </template>
-    <template #[`item.purchaseDate`]="{ item, value }">
-      <grid-text-field :model-val="!item.isEditMode ? formatDate(value) : value" :readonly="!item.isEditMode" />
-    </template>-->
     <template #expanded-row="{ columns, item }">
       <tr>
         <td :colspan="columns.length">
@@ -123,6 +119,8 @@ const search = ref('');
 const selectedRowList = ref([]);
 const isDialogOpen = ref(false);
 const expandedRowList = ref([]);
+const itemChange = ref(false);
+const dialogText = ref('선택된 데이터가 없습니다.');
 
 const props = defineProps({
   gridNoDataText: {
@@ -137,13 +135,19 @@ const selectedRowLength = computed(() => {
   return selectedRowList.value.length;
 });
 
-const dialogText = computed(() => {
-  let res = '선택된 데이터가 없습니다.';
-  if (selectedRowLength.value > 0) res = `${selectedRowList.value.length}개의 데이터를 삭제하시겠습니까?`;
-  return res;
-});
+function selectedRow(item) {
+  if (!selectedRowList.value.includes(item)) {
+    selectedRowList.value.push(item);
+  } else {
+    selectedRowList.value = selectedRowList.value.filter((x) => x.purchaseId !== item.purchaseId);
+  }
+  console.log(selectedRowList.value);
+}
 
 function onClickDelete() {
+  if (selectedRowLength.value > 0) {
+    dialogText.value = `${selectedRowLength.value}개의 데이터를 삭제하시겠습니까?`;
+  }
   isDialogOpen.value = true;
 }
 
@@ -172,6 +176,7 @@ function modItem(item) {
  * */
 function saveItem(item) {
   // TODO 저장 API
+  itemChange.value = false;
   unexpandedRow(item);
 }
 
@@ -181,15 +186,17 @@ function saveItem(item) {
  * 2. unexpandedRow
  * */
 function cancelItem(item) {
+  if (changeCheck()) return;
   unexpandedRow(item);
 }
 
-/**
- * 1. 편집모드 비활성화
- * 2. expandedRowList 빈값처리
- * */
 function unexpandedRow(item) {
   item.isEditMode = false;
+  expandedRowList.value = [];
+}
+
+function unexpandedAll() {
+  store.setEditMode(false);
   expandedRowList.value = [];
 }
 
@@ -197,24 +204,34 @@ function unexpandedRow(item) {
  * row 선택 시 update expanded
  * */
 function expandedRow(item) {
-  console.log(item);
-  // expandedRow 초기화
-  expandedRowList.value = [];
+  if (changeCheck()) return;
 
-  // 선택했던 row 다시 클릭하면 item length 0임
-  if (item.length === 0) {
-    store.setEditMode(false);
+  if (!expandedRowList.value[0]) {
+    expandedRowList.value.push(item);
+    itemChange.value = false;
     return;
   }
 
-  // item.isEditMode = true;
-  expandedRowList.value.push(item);
-  // item.map((x) => x.isEditMode = false);
-  // if (item.length === 1) {
-  //   expandedRowList.value.push(item[0]);
-  // } else {
-  //   expandedRowList.value.push(item[1]);
-  // }
+  if (expandedRowList.value[0].purchaseId === item.purchaseId) {
+    unexpandedAll();
+  } else {
+    unexpandedAll();
+    expandedRowList.value.push(item);
+    itemChange.value = false;
+  }
+}
+
+function changeEvent() {
+  itemChange.value = true;
+}
+
+// 수정 데이터가 있으면 return true
+function changeCheck() {
+  if (!itemChange.value) return false;
+
+  dialogText.value = '수정된 데이터가 있습니다.';
+  isDialogOpen.value = true;
+  return true;
 }
 </script>
 
